@@ -1,0 +1,76 @@
+﻿@model IEnumerable<CrudApp_AspNetCoreWebAPP.Models.Products>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+@{
+    if (TempData["Insert_Data"] != null){
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Success!</strong> @TempData["Insert_Data"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+    if (TempData["Update_Data"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Success!</strong> @TempData["Update_Data"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+    if (TempData["Delete_Data"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Success!</strong> @TempData["Delete_Data"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.itemId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.itemName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.itemDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.itemPrice)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.itemId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.itemName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.itemDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.itemPrice)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.itemId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.itemId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.itemId })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

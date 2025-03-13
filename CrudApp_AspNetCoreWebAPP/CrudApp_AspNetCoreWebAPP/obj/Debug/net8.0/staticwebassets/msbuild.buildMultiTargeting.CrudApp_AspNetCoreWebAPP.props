@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\CrudApp_AspNetCoreWebAPP.props" />
+</Project>
